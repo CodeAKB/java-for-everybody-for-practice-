@@ -1,41 +1,8 @@
 import java.util.Scanner;
 
 public class TemperatureConverter {
-    public static void RunTemperatureConverter(String[] args) {
-        Scanner input = new Scanner(System.in);
-        double temperature;
-        char unit;
-        
-        // Prompt the user to enter the temperature and its unit
-        System.out.print("Enter temperature: ");
-        temperature = input.nextDouble();
-        System.out.print("Enter unit (C/F/K): ");
-        unit = input.next().charAt(0);
-        
-        // Convert the temperature to other units based on the input unit
-        switch (unit) {
-            case 'C':
-            case 'c':
-                System.out.printf("%.2f C = %.2f F%n", temperature, celsiusToFahrenheit(temperature));
-                System.out.printf("%.2f C = %.2f K%n", temperature, celsiusToKelvin(temperature));
-                break;
-            case 'F':
-            case 'f':
-                System.out.printf("%.2f F = %.2f C%n", temperature, fahrenheitToCelsius(temperature));
-                System.out.printf("%.2f F = %.2f K%n", temperature, fahrenheitToKelvin(temperature));
-                break;
-            case 'K':
-            case 'k':
-                System.out.printf("%.2f K = %.2f C%n", temperature, kelvinToCelsius(temperature));
-                System.out.printf("%.2f K = %.2f F%n", temperature, kelvinToFahrenheit(temperature));
-                break;
-            default:
-                System.out.println("Invalid unit.");
-                break;
-        }
-    }
-    
-    // Conversion methods
+	
+       // Conversion methods
     public static double celsiusToFahrenheit(double celsius) {
         return (celsius * 9 / 5) + 32;
     }
@@ -58,6 +25,38 @@ public class TemperatureConverter {
     
     public static double kelvinToFahrenheit(double kelvin) {
         return (kelvin * 9 / 5) - 459.67;
-    }
+    } 
+    
+    public static void RunTemperatureConverter() {
+        Scanner input = new Scanner(System.in);
+        double temperature;
+        char unit;
+        
+        // Prompt the user to enter the temperature and its unit
+        System.out.print("Enter temperature: ");
+        temperature = input.nextDouble();
+        System.out.print("Enter unit (C/F/K): ");
+        unit = input.next().charAt(0);
+        
+        // Convert the temperature to other units based on the input unit
+       if(Character.toLowerCase(unit) == 'c') {
+		    System.out.printf("%.2f C = %.2f F%n", temperature, celsiusToFahrenheit(temperature));
+            System.out.printf("%.2f C = %.2f K%n", temperature, celsiusToKelvin(temperature));
+	   }
+	   else if(Character.toLowerCase(unit) == 'f') {
+		   System.out.printf("%.2f F = %.2f C%n", temperature, fahrenheitToCelsius(temperature));
+           System.out.printf("%.2f F = %.2f K%n", temperature, fahrenheitToKelvin(temperature));
+	   }
+	   else if(Character.toLowerCase(unit) == 'k') {
+		   System.out.printf("%.2f K = %.2f C%n", temperature, kelvinToCelsius(temperature));
+           System.out.printf("%.2f K = %.2f F%n", temperature, kelvinToFahrenheit(temperature));
+	   }
+	   else {
+		   System.out.println("Invalid unit.");
+	   }
+   }
+    
+    public static void main(String[] args) {
+		RunTemperatureConverter();
+	}
 }
-
